@@ -5,7 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { LoginComponent } from './Account/login/login.component';
-import { RigisterComponent } from './Account/rigister/rigister.component';
+import { RigisterComponent } from './Account/register/rigister.component';
+import { HomeComponent } from './home/home.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -13,11 +16,13 @@ import { RigisterComponent } from './Account/rigister/rigister.component';
     NavBarComponent,
     NavBarComponent,
     LoginComponent,
-    RigisterComponent
+    RigisterComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
