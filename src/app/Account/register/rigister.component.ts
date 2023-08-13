@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { RegisterModel } from 'src/models/register.model';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { RegisterModel } from 'src/app/models/register.model';
+import { RegisterServiceService } from 'src/app/services/register-service.service';
 
 @Component({
   selector: 'app-rigister',
@@ -9,9 +10,10 @@ import { RegisterModel } from 'src/models/register.model';
 })
 export class RigisterComponent implements OnInit{
  
-  constructor(){}
+  constructor(private service: RegisterServiceService){}
 
-  reg: RegisterModel = new RegisterModel;
+   reg : RegisterModel;
+ 
   
   userFrom = new FormGroup({
     Email:new FormControl('',Validators.required),
@@ -20,15 +22,28 @@ export class RigisterComponent implements OnInit{
     RepeatPasswordHash:new FormControl('',[Validators.required])
   });
 
+  ngOnInit(): void {
+    this.reg={
+      userName: '',
+      email: '',
+      PasswordHash: ''
+    };
+  }
+
   onRegister(){
     console.log(this.userFrom);
     console.warn(this.userFrom.value);
-  }
-
-
-
-  ngOnInit(): void {
+    if (this.userFrom.valid) 
+    this.validateRegisterModel();
+      this.service.Register(this.reg).subscribe(succes =>{
+        alert('goooood');
+      },error => console.log(error));
+    }
     
+  validateRegisterModel() {
+    this.reg.userName = this.userFrom.value.UserName!;
+    this.reg.email = this.userFrom.value.Email!;
+    this.reg.PasswordHash = this.userFrom.value.PasswordHash!;
   }
 
-}
+  }
