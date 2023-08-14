@@ -1,6 +1,5 @@
-export class RegisterModel{
-
-    UserName:string;
+export class LoginModel{
+    
     Email:string;
     PasswordHash:string;
 

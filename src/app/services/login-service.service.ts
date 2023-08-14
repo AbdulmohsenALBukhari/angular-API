@@ -1,24 +1,24 @@
 import { Injectable } from '@angular/core';
-import { RegisterModel } from '../models/register.model';
 import { Observable } from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { LoginModel } from '../models/login.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class RegisterServiceService {
 
+export class loginServiceService{
 
-  constructor(private http: HttpClient) { }
+    constructor(private http:HttpClient){}
 
+    
   baseUrl = 'http://localhost:5140/api/Account/';
  
    
    headers= new HttpHeaders()
     .set('content-type', 'application/json');
 
-  Register(reg : RegisterModel):Observable<RegisterModel>{
-    return this.http.post<RegisterModel>(this.baseUrl + 'Rigister', reg, {'headers':this.headers}).pipe();
-  }
-
+    Login(reg : LoginModel):Observable<LoginModel>{
+        return this.http.post<LoginModel>(this.baseUrl + 'Login', reg,{'headers':this.headers}).pipe();
+    }
 }

@@ -19,20 +19,18 @@ export class RigisterComponent implements OnInit{
     Email:new FormControl('',Validators.required),
     UserName:new FormControl('',Validators.required),
     PasswordHash:new FormControl('',[Validators.required,Validators.minLength(6)]),
-    RepeatPasswordHash:new FormControl('',[Validators.required])
   });
 
   ngOnInit(): void {
     this.reg={
-      userName: '',
-      email: '',
+      UserName: '',
+      Email: '',
       PasswordHash: ''
     };
   }
 
   onRegister(){
-    console.log(this.userFrom);
-    console.warn(this.userFrom.value);
+    console.log(this.userFrom);    
     if (this.userFrom.valid) 
     this.validateRegisterModel();
       this.service.Register(this.reg).subscribe(succes =>{
@@ -41,8 +39,8 @@ export class RigisterComponent implements OnInit{
     }
     
   validateRegisterModel() {
-    this.reg.userName = this.userFrom.value.UserName!;
-    this.reg.email = this.userFrom.value.Email!;
+    this.reg.UserName = this.userFrom.value.UserName!;
+    this.reg.Email = this.userFrom.value.Email!;
     this.reg.PasswordHash = this.userFrom.value.PasswordHash!;
   }
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,13 +12,6 @@ export class LoginComponent {
   constructor(){}
 
 
-  userFrom = new FormGroup({
-    Email:new FormControl('',Validators.required),
-    PasswordHash:new FormControl('',Validators.required)
-  });
 
-  onLogin(){
-    console.warn(this.userFrom.get('Email')?.valid);
-  }
 
 }
