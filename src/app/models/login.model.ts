@@ -1,6 +1,7 @@
 export class LoginModel{
     
-    Email:string;
+    //same model in api c#
+    Email:string; 
     PasswordHash:string;
 
     constructor(){
