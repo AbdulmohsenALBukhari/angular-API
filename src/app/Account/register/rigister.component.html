@@ -157,7 +157,7 @@
 
       <div class="text-danger" *ngIf="!this.userFrom.get('UserName')?.valid && this.userFrom.get('UserName')?.touched">*</div>
         <div class="input-field">
-          <input required type="email" id="Email" class="form-control" formControlName="Email"
+          <input required type="text" id="UserName" class="form-control" formControlName="UserName"
           [ngClass]="{'is-invalid' : !this.userFrom.get('UserName')?.valid && this.userFrom.get('UserName')?.touched}" />
           <label>Enter your User name</label>
       </div>

@@ -9,6 +9,8 @@ import { RigisterComponent } from './Account/register/rigister.component';
 import { HomeComponent } from './home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+
 
 
 @NgModule({
@@ -24,8 +26,11 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
+    
   ],
+  exports: [RouterModule],
   providers: [],
   bootstrap: [AppComponent]
 })

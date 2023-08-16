@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginModel } from 'src/app/models/login.model';
 import { loginServiceService } from 'src/app/services/login-service.service';
 
@@ -12,7 +13,7 @@ import { loginServiceService } from 'src/app/services/login-service.service';
 export class LoginComponent implements OnInit {
 
   // service the login
-  constructor(private service:loginServiceService){}
+  constructor(private service:loginServiceService,private router: Router){}
 
   ngOnInit(): void {
     // index farst value modfiy
@@ -35,9 +36,9 @@ export class LoginComponent implements OnInit {
 
     if(this.userForm.valid){ // chack if filed is valid or not
       this.validateLoginModel(); // inster input in value log model 
-      this.service.Login(this.log).subscribe(succes => { // send messega in console
-        alert('goood');
-      },error => console.log(error))
+      this.service.Login(this.log).subscribe();
+    }else{
+      console.warn(this.log);
     }
   }  
 
