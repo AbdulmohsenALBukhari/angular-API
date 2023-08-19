@@ -23,7 +23,7 @@ export class RegisterServiceService {
   }
 
   getAllUser():Observable<user[]>{
-    return this.http.get<user[]>(this.baseUrl + 'GetAllUserAsync');
+    return this.http.get<user[]>(this.baseUrl + 'GetAllUserAsync').pipe();
   }
 
 }

@@ -53,4 +53,24 @@ export class RigisterComponent implements OnInit{
     },err => alert(err.error))
   }
 
+  isEmailExist(em: string){
+    for(const name of this.user){
+      if(name.Email ===  em){
+        console.log('email exist');
+        return true;
+      }
+    }
+    return false;
+  }
+
+  isUserNameExist(UserName: string){
+    for(const name of this.user){
+      if(name.UserName ===  UserName){
+        console.log('User Name exist');
+        return true;
+      }
+    }
+    return false;
+  }
+
   }
