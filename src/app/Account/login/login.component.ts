@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginModel } from 'src/app/models/login.model';
+import { user } from 'src/app/models/user';
 import { loginServiceService } from 'src/app/services/login-service.service';
 
 
@@ -19,12 +20,14 @@ export class LoginComponent implements OnInit {
     // index farst value modfiy
     this.log={
       Email:'',
-      PasswordHash:''
+      PasswordHash:'',
+      Remember:false
     };
   }
 
   // log model
   log : LoginModel;
+  user : user[]; 
 
   userForm = new FormGroup({
     Email:new FormControl('',Validators.required),// take value form html with if 
@@ -45,6 +48,13 @@ export class LoginComponent implements OnInit {
   validateLoginModel(){
     this.log.Email = this.userForm.value.Email!; // insert value in model
     this.log.PasswordHash = this.userForm.value.PasswordHash!;
+  }
+
+  getById(){
+    this.service.getById(this.log).subscribe(list =>{
+      this.user = list;
+      console.warn(this.user);
+    },err => alert(err.error))
   }
 
 }
