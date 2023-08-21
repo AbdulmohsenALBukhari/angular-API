@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     this.log={
       Email:'',
       PasswordHash:'',
-      Remember:false
+      RememberMe:false
     };
   }
 
@@ -31,7 +31,8 @@ export class LoginComponent implements OnInit {
 
   userForm = new FormGroup({
     Email:new FormControl('',Validators.required),// take value form html with if 
-    PasswordHash:new FormControl('',Validators.required)
+    PasswordHash:new FormControl('',Validators.required),
+    RememberMe:new FormControl(false)
   })
 
   onLogin(){
@@ -39,15 +40,18 @@ export class LoginComponent implements OnInit {
 
     if(this.userForm.valid){ // chack if filed is valid or not
       this.validateLoginModel(); // inster input in value log model 
-      this.service.Login(this.log).subscribe();
+      this.service.Login(this.log).subscribe(success => {
+        this.router.navigate(['home'])
+      });
     }else{
       console.warn(this.log);
-    }
+    } 
   }  
 
   validateLoginModel(){
     this.log.Email = this.userForm.value.Email!; // insert value in model
     this.log.PasswordHash = this.userForm.value.PasswordHash!;
+    this.log.RememberMe = this.userForm.value.RememberMe!;
   }
 
   getById(){

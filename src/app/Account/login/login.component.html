@@ -79,15 +79,15 @@
             [ngClass]="{'is-invalid' : !this.userForm.get('PasswordHash')?.valid && this.userForm.get('PasswordHash')?.touched}" />            <label>Enter your password</label>
           </div>
           <div class="forget">
-            <label for="remember">
-              <input type="checkbox" id="remember" formGroupName="Remember">
+            <label for="PasswordHash">
+              <input type="checkbox" id="RememberMe" formGroupName="RememberMe">
               <p>Remember me</p>
             </label>
             <a href="#">Forgot password?</a>
           </div>
           <button type="submit" [disabled]="!userForm.valid">Log In</button>
           <div class="register">
-            <p>Don't have an account? <a routerLink="login">Register</a></p>
+            <p>Don't have an account? <a href="register">Register</a></p>
           </div>
         </form>
       </div>    
