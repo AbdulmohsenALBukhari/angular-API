@@ -27,4 +27,8 @@ export class loginServiceService{
     getById(reg : LoginModel):Observable<user[]>{
       return this.http.get<user[]>(this.baseUrl + 'get-by-id' + reg.Email).pipe();
     }
+
+    LogoutUser(){
+      return this.http.get(this.baseUrl + 'Logout').pipe();
+    }
 }
