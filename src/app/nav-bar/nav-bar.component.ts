@@ -20,8 +20,18 @@ export class NavBarComponent {
 
   logout(){
     this.service.LogoutUser().subscribe(success => {
+      localStorage.removeItem('emailKey');
+      localStorage.removeItem('expire');
+
       this.router.navigate(['home']);
     },err => console.log(err));
   }
 
+  isUserRegistered(){
+    const email = !!localStorage.getItem('emailKey');
+    if(email){
+      return true;
+    }
+    return false;
+  }
 }

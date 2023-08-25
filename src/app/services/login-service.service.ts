@@ -31,4 +31,8 @@ export class loginServiceService{
     LogoutUser(){
       return this.http.get(this.baseUrl + 'Logout').pipe();
     }
+
+    GetRoleName(email : string){
+      return this.http.get(this.baseUrl + 'GetRoleName/' + email, {responseType: 'text'}).pipe();
+    }
 }

@@ -28,7 +28,7 @@ export class RigisterComponent implements OnInit{
       Email: '',
       PasswordHash: ''
     };
-    this.getAllUser();
+    //this.getAllUser();
   }
 
   onRegister(){

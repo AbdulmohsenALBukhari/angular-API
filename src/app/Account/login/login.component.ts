@@ -41,6 +41,21 @@ export class LoginComponent implements OnInit {
     if(this.userForm.valid){ // chack if filed is valid or not
       this.validateLoginModel(); // inster input in value log model 
       this.service.Login(this.log).subscribe(success => {
+        const Remember = !!this.userForm.value.RememberMe!;
+        const day = new Date();
+        if(Remember){
+          day.setDate(day.getDate() + 15);
+        }else{
+          day.setMinutes(day.getMinutes() + 35);
+        }
+        localStorage.setItem('emailKey',this.userForm.value.Email!);
+        localStorage.setItem('expire',day.toString());
+
+        this.service.GetRoleName(this.userForm.value.Email!).subscribe(succ =>{
+          localStorage.setItem('role',succ.toString());
+
+        },err=> console.log(err));
+
         this.router.navigate(['home'])
       });
     }else{
